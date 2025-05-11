@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-O0 -g -pipe
-CFLAGS+=$(shell python3.13-config --cflags)
+CFLAGS+=$(shell python3-config --cflags)
 CFLAGS+=$(shell pkg-config --cflags)
 
-LDFLAGS+=$(shell python3.13-config --ldflags --embed)
+LDFLAGS+=$(shell python3-config --ldflags --embed)
 LDLAGS+=$(shell pkg-config --libs libsystemd-journal)
 # Fedora
 LDFLAGS+=$(shell pkg-config --libs libsystemd)
