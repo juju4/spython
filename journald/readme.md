@@ -5,18 +5,18 @@ This sample writes messages using [journald](https://www.freedesktop.org/softwar
 
 To build on Linux, run `make` with a copy of Python 3.8.0rc1 or later
 installed. Ensure to have sd-journal.h (Fedora systemd-devel or Debian libsystemd-dev)
-and update Makefile with your python version.
+and update Makefile with your python version if necessary.
 
 You may need to enable a journald service on your machine in order to
-receive the events. For example, if using `rjournald`, you might use
+receive the events. For example, if using `journald`, you might use
 these commands:
 
 ```
 $ make
-$ sudo service rjournald start
+$ sudo systemctl start systemd-journald
 $ ./spython test-file.py
-$ sudo service rjournald stop
-$ cat /var/log/journald
+$ sudo systemctl stop systemd-journald
+$ sudo journalctl -l --no-pager -t spython -o json -n 3
 ```
 
 References
